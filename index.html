@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Laura Ferreira</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Manrope:wght@300;400;500;600&family=Six+Caps&display=swap" rel="stylesheet">
+
+    <style>
+
+        :root {
+            --black: #111;
+            --white: #fff;
+            --burgundy: #9B2C2C;
+            --purple: #7B4DFF;
+            --lime: #C6F000;
+            --yellow: #F2C94C;
+            --blue: #3155FF;
+            --orange: #E4773C;
+            --green: #3B8D63;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--white);
+            color: var(--black);
+            font-family: "DM Sans", sans-serif;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+        }
+
+        .hero-title,
+        .project-title,
+        .area-name,
+        .about-name,
+        .cta-copy h2 {
+            font-family: "Six Caps", sans-serif;
+            font-weight: 400;
+            letter-spacing: .01em;
+        }
+
+        /* HEADER */
+
+        header {
+            position: absolute;
+            inset: 0 0 auto;
+            width: 100%;
+            padding: 25px 5.5vw;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 20;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-family: "Manrope", sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: -.035em;
+        }
+
+        .logo span {
+            color: var(--purple);
+        }
+
+        .logo-mark {
+            width: auto;
+            height: 14px;
+            max-width: 14px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        nav {
+            display: flex;
+            gap: 34px;
+        }
+
+        nav a {
+            font-family: "DM Sans", sans-serif;
+            font-size: 11px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+            transition: opacity .2s ease;
+        }
+
+        nav a:hover {
+            opacity: .55;
+        }
+
+        /* MARCAÇÕES */
+
+        .marker {
+            position: relative;
+            display: inline;
+            z-index: 1;
+        }
+
+        .marker::after {
+            content: "";
+            position: absolute;
+            left: -2%;
+            right: -2%;
+            bottom: 7%;
+            height: 30%;
+            z-index: -1;
+            border-radius: 1px;
+            transform: rotate(-1deg);
+        }
+
+        .marker-yellow::after { background: var(--yellow); }
+        .marker-blue::after { background: var(--blue); }
+        .marker-orange::after { background: var(--orange); }
+
+        /* HERO */
+
+        .hero {
+            position: relative;
+            min-height: 45vh;
+            padding: 125px 6vw 35px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-label {
+            margin-bottom: 32px;
+            font-size: 10px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: .09em;
+        }
+
+        .hero-title {
+            max-width: 850px;
+            font-size: clamp(52px, 6.5vw, 92px);
+            line-height: .9;
+        }
+
+        .hero-image {
+            position: absolute;
+            right: 7vw;
+            bottom: 9vh;
+            width: clamp(110px, 13vw, 185px);
+            z-index: 2;
+        }
+
+        .hero-image img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        /* WORK */
+
+        .work {
+            padding: 15px 6vw 70px;
+        }
+
+        .section-label {
+            border-top: 1px solid var(--black);
+            padding-top: 9px;
+            margin-bottom: 18px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 2px;
+            font-size: 10px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1.7fr 1fr;
+            grid-template-rows: minmax(420px, 58vh) minmax(360px, 48vh);
+            gap: 3px;
+            align-items: stretch;
+        }
+
+        .project {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+            transition: transform .45s cubic-bezier(.2,.7,.2,1);
+        }
+
+        .project-flavia { grid-column: 1; grid-row: 1; }
+        .project-atelie { grid-column: 2; grid-row: 1; }
+        .project-sabidamente { grid-column: 1 / -1; grid-row: 2; }
+
+        .project:hover {
+            transform: translateY(-3px);
+            z-index: 10;
+        }
+
+        .project > a {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .project-slider {
+            position: relative;
+            width: 100%;
+            height: 100% !important;
+            overflow: hidden;
+            cursor: pointer;
+            background: #eee;
+        }
+
+        .project-slide {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+
+        .project-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.01);
+            transform-origin: center;
+            transition: transform .8s cubic-bezier(.2,.7,.2,1), filter .5s ease;
+        }
+
+        .project:hover .project-slide img {
+            transform: scale(1.055);
+        }
+
+        .project-slider::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,.72) 0%, rgba(0,0,0,.28) 35%, rgba(0,0,0,0) 68%);
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .project-info {
+            position: absolute;
+            inset: auto 0 0 0;
+            z-index: 5;
+            padding: 30px 28px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 30px;
+            color: var(--white);
+            pointer-events: none;
+        }
+
+        .project-info > div:first-child {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .project-info a { pointer-events: auto; }
+
+        .project-title {
+            font-size: clamp(42px, 4.5vw, 70px);
+            line-height: .82;
+            color: var(--white);
+            text-shadow: 0 2px 15px rgba(0,0,0,.15);
+            transition: opacity .2s ease;
+        }
+
+        .project-title:hover { opacity: .7; }
+
+        .project-meta {
+            font-family: "Manrope", sans-serif;
+            font-size: 9px;
+            line-height: 1.55;
+            text-align: right;
+            text-transform: uppercase;
+            letter-spacing: .07em;
+            color: var(--white);
+        }
+
+        .project-open {
+            display: inline-block;
+            margin-top: 17px;
+            padding-bottom: 4px;
+            border-bottom: 1px solid var(--white);
+            font-family: "Manrope", sans-serif;
+            font-size: 9px;
+            font-weight: 500;
+            letter-spacing: .07em;
+            text-transform: uppercase;
+            color: var(--white);
+            transition: opacity .2s ease, transform .2s ease;
+        }
+
+        .project-open:hover {
+            opacity: .65;
+            transform: translateX(4px);
+        }
+
+        /* ATUAÇÃO */
+
+        .areas { padding: 65px 6vw 100px; }
+        .area {
+            border-top: 1px solid var(--black);
+            padding: 18px 0;
+            display: grid;
+            grid-template-columns: 35% 65%;
+            align-items: start;
+        }
+        .area:nth-child(2) { border-top: none; }
+        .area:last-child { border-bottom: 1px solid var(--black); }
+        .area-name { font-size: clamp(34px, 3.5vw, 50px); line-height: .9; }
+        .area-description { max-width: 450px; font-size: 14px; line-height: 1.5; }
+
+        /* SOBRE */
+
+        .about { padding: 110px 6vw 125px; }
+        .about-header {
+            border-top: 1px solid var(--black);
+            padding-top: 9px;
+            margin-bottom: 65px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+        }
+
+        .about-intro {
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            gap: 8vw;
+            align-items: start;
+            margin-bottom: 110px;
+        }
+
+        .about-photo {
+            position: relative;
+            width: min(100%, 390px);
+            height: 470px;
+            margin-left: auto;
+            overflow: hidden;
+            background: #eee;
+        }
+
+        .about-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            filter: grayscale(100%);
+            transition: transform .8s cubic-bezier(.2,.7,.2,1), filter .5s ease;
+        }
+
+        .about-photo:hover img {
+            transform: scale(1.035);
+            filter: grayscale(0%);
+        }
+
+        .about-name { font-size: clamp(70px, 8vw, 120px); line-height: .78; margin-bottom: 42px; }
+        .about-description { max-width: 560px; font-size: 16px; line-height: 1.55; }
+        .about-description p + p { margin-top: 20px; }
+
+        .about-information { display: grid; grid-template-columns: 1fr 1fr; gap: 8vw; }
+        .about-block { border-top: 1px solid var(--black); padding-top: 12px; }
+        .about-block + .about-block { margin-top: 55px; }
+        .about-block-label {
+            margin-bottom: 28px;
+            font-family: "Manrope", sans-serif;
+            font-size: 10px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-left: 1px solid #ddd;
+            border-top: 1px solid #ddd;
+        }
+
+        .tool {
+            min-height: 112px;
+            padding: 17px 12px;
+            border-right: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: background .25s ease, transform .25s ease;
+        }
+
+        .tool:hover { color: var(--black); transform: translate(-3px, -3px); }
+        .tool:nth-child(1):hover { background: var(--purple); }
+        .tool:nth-child(2):hover { background: var(--blue); }
+        .tool:nth-child(3):hover { background: var(--yellow); }
+        .tool:nth-child(4):hover { background: var(--orange); }
+        .tool:nth-child(5):hover { background: var(--green); }
+        .tool:nth-child(6):hover { background: var(--burgundy); color: var(--white); }
+        .tool:nth-child(7):hover { background: var(--lime); }
+        .tool:nth-child(8):hover { background: var(--purple); }
+
+        .tool-icon { width: 25px; height: 25px; display: flex; align-items: center; justify-content: flex-start; flex-shrink: 0; }
+        .tool-icon img { width: 23px; height: 23px; object-fit: contain; display: block; }
+        .tool-name { font-family: "Manrope", sans-serif; font-size: 10px; font-weight: 500; line-height: 1.2; }
+
+        .credentials { display: grid; grid-template-columns: 1fr 1fr; gap: 45px; }
+        .credential-item { padding-bottom: 22px; border-bottom: 1px solid #ddd; }
+        .credential-item + .credential-item { margin-top: 22px; }
+        .credential-year { margin-bottom: 8px; font-family: "Manrope", sans-serif; font-size: 9px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; }
+        .credential-title { font-size: 14px; font-weight: 400; line-height: 1.35; }
+        .credential-place { margin-top: 5px; font-size: 11px; line-height: 1.4; }
+
+        /* CONTACT */
+
+        .contact { padding: 70px 5.5vw 75px; }
+        .cta-content {
+            min-height: 190px;
+            padding: 42px 33px;
+            background: var(--lime);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+        }
+
+        .cta-copy h2 { font-size: clamp(34px, 3.5vw, 50px); line-height: .9; margin-bottom: 14px; }
+        .cta-copy p { font-size: 15px; line-height: 1.4; }
+
+        .cta-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 17px; }
+        .cta-link {
+            padding-bottom: 5px;
+            border-bottom: 1px solid var(--black);
+            font-family: "Manrope", sans-serif;
+            font-size: clamp(19px, 2vw, 27px);
+            font-weight: 500;
+            letter-spacing: -.035em;
+            white-space: nowrap;
+            transition: border-width .2s ease, transform .2s ease;
+        }
+
+        .cta-link:hover { border-bottom-width: 2px; transform: translateY(-2px); }
+
+        .cta-socials { display: flex; gap: 10px; }
+        .social-button {
+            width: 38px;
+            height: 38px;
+            border: 1px solid var(--black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background .2s ease, color .2s ease, transform .2s ease;
+        }
+
+        .social-button:hover { color: var(--black); transform: translateY(-3px); }
+        .social-button:first-child:hover { background: var(--purple); }
+        .social-button:last-child:hover { background: var(--yellow); }
+        .social-button svg { width: 16px; height: 16px; fill: currentColor; }
+
+        /* FOOTER */
+
+        footer {
+            border-top: 1px solid var(--black);
+            padding: 18px 5.5vw;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-family: "DM Sans", sans-serif;
+            font-size: 9px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+        }
+
+        @media (max-width: 700px) {
+            header { padding: 20px 6vw; }
+            nav { gap: 15px; }
+            nav a { font-size: 9px; }
+            .hero { min-height: 55vh; padding: 120px 6vw 45px; }
+            .hero-title { font-size: 17vw; line-height: .86; }
+            .hero-image { right: 6vw; bottom: 5vh; width: 95px; }
+            .projects-grid { grid-template-columns: 1fr; grid-template-rows: none; }
+            .project-flavia, .project-atelie, .project-sabidamente { grid-column: 1; grid-row: auto; height: 55vh; }
+            .areas { padding: 55px 6vw 80px; }
+            .area { grid-template-columns: 1fr; gap: 12px; }
+            .about-intro { grid-template-columns: 1fr; gap: 45px; }
+            .about-photo { order: 1; width: 82%; height: 390px; }
+            .about-intro-copy { order: 2; }
+            .about-information { grid-template-columns: 1fr; }
+            .tools-grid { grid-template-columns: repeat(2, 1fr); }
+            .credentials { grid-template-columns: 1fr; }
+            .cta-content { flex-direction: column; align-items: flex-start; padding: 32px 25px; }
+            footer { padding: 18px 6vw; }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <a href="index.html" class="logo">
+        <img src="logolaura.png" alt="Laura Ferreira" class="logo-mark">
+        LAURA FERREIRA<span>®</span>
+    </a>
+    <nav>
+        <a href="index.html#work">Projetos</a>
+        <a href="index.html#about">Sobre</a>
+        <a href="index.html#areas">Atuação</a>
+        <a href="index.html#contact">Contato</a>
+    </nav>
+</header>
+
+<main id="top">
+
+<section class="hero">
+    <div class="hero-label">Marketing & Estratégia</div>
+    <h1 class="hero-title">
+         <span class="marker marker-yellow">Laura Ferreira</span>
+    </h1>
+    <div class="hero-image">
+        <img src="logolaura-hero.png" alt="Laura Ferreira">
+    </div>
+</section>
+
+<section class="work" id="work">
+    <div class="section-label">
+        <span>Projetos</span>
+        <span>Selecionados</span>
+    </div>
+
+    <div class="projects-grid">
+        <!-- FLAVIA -->
+        <article class="project project-flavia">
+            <a href="espaco-flavia-pires.html" target="_blank">
+                <div class="project-slider">
+                    <div class="project-slide">
+                        <img src="flavia1.jpg" alt="Espaço Flavia Pires">
+                    </div>
+                    <div class="project-info">
+                        <div>
+                            <h2 class="project-title">Espaço Flavia Pires</h2>
+                            <span class="project-open">Abrir projeto →</span>
+                        </div>
+                        <div class="project-meta">
+                           Estratégia<br>Conteúdo<br>Branding Experience (BX)
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </article>
+
+        <!-- ATELIÊ -->
+        <article class="project project-atelie">
+            <a href="atelie-mirim.html" target="_blank">
+                <div class="project-slider">
+                    <div class="project-slide">
+                        <img src="atelie-mirim2.jpg" alt="Ateliê Mirim">
+                    </div>
+                    <div class="project-info">
+                        <div>
+                            <h2 class="project-title">Ateliê Mirim</h2>
+                            <span class="project-open">Abrir projeto →</span>
+                        </div>
+                        <div class="project-meta">
+                            Estratégia<br>Conteúdo<br>Branding Experience (BX)
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </article>
+
+        <!-- SABIDAMENTE -->
+        <article class="project project-sabidamente">
+            <a href="sabidamente.html" target="_blank">
+                <div class="project-slider">
+                    <div class="project-slide">
+                        <img src="sabidamente1.jpg" alt="Sabidamente">
+                    </div>
+                    <div class="project-info">
+                        <div>
+                            <h2 class="project-title">Sabidamente</h2>
+                            <span class="project-open">Abrir projeto →</span>
+                        </div>
+                        <div class="project-meta">
+                            Estratégia<br>Mídia Paga<br>Conteúdo
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </article>
+    </div>
+</section>
+
+<section class="areas" id="areas">
+    <div class="section-label">
+        <span>Atuação</span>
+    </div>
+    <div class="area">
+        <h2 class="area-name">Estratégia</h2>
+        <p class="area-description">Pesquisa, diagnóstico, posicionamento e construção de caminhos estratégicos.</p>
+    </div>
+    <div class="area">
+        <h2 class="area-name">Branding</h2>
+        <p class="area-description">Marcas pensadas a partir do que precisam significar, e não apenas de como precisam parecer.</p>
+    </div>
+    <div class="area">
+        <h2 class="area-name">Digital</h2>
+        <p class="area-description">Conteúdo e experiências digitais construídos para conectar estratégia e comportamento.</p>
+    </div>
+    <div class="area">
+        <h2 class="area-name">Dados</h2>
+        <p class="area-description">Dados como ferramenta para investigar, encontrar padrões e apoiar decisões.</p>
+    </div>
+</section>
+
+<section class="about" id="about">
+    <div class="about-header">
+        <span>Sobre</span>
+    </div>
+
+    <div class="about-intro">
+        <div class="about-intro-copy">
+            <h2 class="about-name">
+                Laura<br><span class="marker marker-blue">Ferreira</span>
+            </h2>
+            <div class="about-description">
+                <p>Oi, eu sou a Laura, profissional de Marketing e Cientista da Informação.</p>
+                <p>Minha trajetória combina diferentes formas de olhar para um problema: a investigação e o pensamento estruturado da Ciência da Informação, o olhar analítico e a criatividade do Marketing.</p>
+                <p>Desenvolvo projetos em branding, estratégia e comunicação, enquanto exploro cada vez mais o universo de dados, tecnologia e inteligência artificial.</p>
+                <p>Gosto de aprender fazendo, pesquisar até encontrar aquele detalhe que muda tudo, analisar possibilidades e transformar descobertas em ideias.</p>
+            </div>
+        </div>
+        <div class="about-photo">
+            <img src="laura.jpg" alt="Laura Ferreira">
+        </div>
+    </div>
+
+    <div class="about-information">
+        <div>
+            <div class="about-block">
+                <div class="about-block-label">Ferramentas</div>
+                <div class="tools-grid">
+                    <div class="tool"><div class="tool-icon"><img src="logo-microsoft-excel.png" alt="Excel"></div><span class="tool-name">Excel</span></div>
+                    <div class="tool"><div class="tool-icon"><img src="logo-microsoft-power-bi.png" alt="Power BI"></div><span class="tool-name">Power BI</span></div>
+                    <div class="tool"><div class="tool-icon"><img src="logo-google-analytics.png" alt="Google Analytics"></div><span class="tool-name">Google Analytics</span></div>
+                    <div class="tool"><div class="tool-icon"><img src="logo-canva.png" alt="Canva"></div><span class="tool-name">Canva</span></div>
+                    <div class="tool"><div class="tool-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Adobe_Illustrator_CC_icon.svg" alt="Illustrator"></div><span class="tool-name">Illustrator</span></div>
+                    <div class="tool"><div class="tool-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg" alt="Photoshop"></div><span class="tool-name">Photoshop</span></div>
+                    <div class="tool"><div class="tool-icon"><img src="logo-microsoft-copilot.png" alt="Copilot"></div><span class="tool-name">Copilot</span></div>
+                    <div class="tool"><div class="tool-icon"><img src="logo-claude.png" alt="Claude"></div><span class="tool-name">Claude</span></div>
+                </div>
+            </div>
+
+            <div class="about-block">
+                <div class="about-block-label">Formação</div>
+                <div class="credentials">
+                    <div>
+                        <div class="credential-item">
+                            <div class="credential-year">2024 — 2026</div>
+                            <div class="credential-title">Tecnólogo em Marketing</div>
+                            <div class="credential-place">Faculdade FACHA</div>
+                        </div>
+                        <div class="credential-item">
+                            <div class="credential-year">2012 — 2017</div>
+                            <div class="credential-title">Bacharel em Biblioteconomia</div>
+                            <div class="credential-place">UNIRIO</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="about-block">
+                <div class="about-block-label">Certificações</div>
+                <div class="credentials">
+                    <div>
+                        <div class="credential-item"><div class="credential-year">2025</div><div class="credential-title">Google Data Analytics Professional Certificate</div><div class="credential-place">Coursera</div></div>
+                        <div class="credential-item"><div class="credential-year">2025</div><div class="credential-title">Análise de Dados com Excel e Copilot</div><div class="credential-place">DIO</div></div>
+                        <div class="credential-item"><div class="credential-year">2025</div><div class="credential-title">Power BI</div><div class="credential-place">Santander Open Academy</div></div>
+                        <div class="credential-item"><div class="credential-year">2026</div><div class="credential-title">Google Analytics Certification</div><div class="credential-place">Google Skillshop</div></div>
+                        <div class="credential-item"><div class="credential-year">2026</div><div class="credential-title">Google Digital Marketing & E-commerce</div><div class="credential-place">Coursera</div></div>
+                        <div class="credential-item"><div class="credential-year">2026</div><div class="credential-title">Automação de Marketing</div><div class="credential-place">Santander Open Academy</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="contact" id="contact">
+    <div class="cta-content">
+        <div class="cta-copy">
+            <h2>GOSTOU DO QUE VIU?</h2>
+            <p>Vamos criar algo inesquecível</p>
+        </div>
+        <div class="cta-actions">
+            <a href="mailto:seuemail@email.com" class="cta-link">ENTRE EM CONTATO</a>
+            <div class="cta-socials">
+                <a href="https://www.linkedin.com/in/seuusuario/" target="_blank" rel="noopener" class="social-button" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 8.5H3V21h3.5V8.5ZM4.75 3A2.05 2.05 0 1 0 4.75 7.1 2.05 2.05 0 0 0 4.75 3ZM21 13.83C21 10.06 18.98 8.3 16.28 8.3c-2.19 0-3.17 1.2-3.72 2.04V8.5H9.06V21h3.5v-6.2c0-1.64.31-3.23 2.34-3.23 2 0 2.03 1.87 2.03 3.34V21H21v-7.17Z"/></svg>
+                </a>
+                <a href="mailto:seuemail@email.com" class="social-button" aria-label="E-mail">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <span>Laura Ferreira © 2026</span>
+    <span>Marketing & Estratégia</span>
+</footer>
+
+</body>
+</html>

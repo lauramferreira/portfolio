@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ateliê Mirim — Laura Ferreira</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Manrope:wght@300;400;500;600&family=Six+Caps&display=swap" rel="stylesheet">
+
+    <style>
+
+        :root {
+            --black: #111;
+            --white: #fff;
+            --purple: #7B4DFF;
+            --lime: #C6F000;
+            --orange: #E4773C;
+            --yellow: #F2C94C;
+
+            --mirim-pink: #EF476F;
+            --mirim-yellow: #FFD166;
+            --mirim-green: #06D6A0;
+            --mirim-blue: #073B4C;
+
+            --page-width: 88vw;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--white);
+            color: var(--black);
+            font-family: "DM Sans", sans-serif;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        img, video {
+            max-width: 100%;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* HEADER */
+
+        header {
+            position: absolute;
+            inset: 0 0 auto;
+            width: 100%;
+            padding: 25px 5.5vw;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 20;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-family: "Manrope", sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: -.035em;
+        }
+
+        .logo span {
+            color: var(--purple);
+        }
+
+        .logo-mark {
+            width: auto;
+            height: 14px;
+            max-width: 14px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        nav {
+            display: flex;
+            gap: 34px;
+        }
+
+        nav a {
+            font-family: "DM Sans", sans-serif;
+            font-size: 11px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+            transition: opacity .2s ease;
+        }
+
+        nav a:hover {
+            opacity: .55;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 58vh;
+            padding: 145px 6vw 85px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .hero-tags {
+            width: 100%;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            font-family: "Manrope", sans-serif;
+            font-size: 9px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+        }
+
+        .hero-tags::before {
+            content: "";
+            width: 22px;
+            height: 2px;
+            background: var(--mirim-green);
+            flex-shrink: 0;
+        }
+
+        .hero-title {
+            max-width: 1000px;
+            font-family: "Six Caps", sans-serif;
+            font-size: clamp(70px, 9vw, 130px);
+            line-height: .82;
+            font-weight: 400;
+            letter-spacing: .01em;
+        }
+
+        .marker {
+            position: relative;
+            display: inline-block;
+            z-index: 1;
+        }
+
+        .marker::after {
+            content: "";
+            position: absolute;
+            left: -2%; right: -2%; bottom: 4%;
+            height: 20%;
+            z-index: -1;
+        }
+
+        .marker-lime::after { background: var(--lime); }
+
+        /* THREE IMAGES */
+
+        .three-images {
+            width: var(--page-width);
+            margin: 0 auto 110px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .three-images img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* STATEMENT + VIDEO */
+
+        .statement-video {
+            width: var(--page-width);
+            margin: 0 auto 100px;
+            display: grid;
+            grid-template-columns: 31% 1fr;
+            gap: 8vw;
+            align-items: center;
+        }
+
+        .statement-video-media {
+            width: 100%;
+            aspect-ratio: 9 / 16;
+            overflow: hidden;
+            background: var(--mirim-yellow);
+        }
+
+        .statement-video-media video {
+            display: block;
+            width: 100%; height: 100%;
+            object-fit: cover;
+        }
+
+        .statement-copy { width: fit-content; max-width: 100%; }
+        .statement-palette { width: 100%; height: 24px; margin-bottom: 35px; display: flex; }
+        .statement-palette span { flex: 1; }
+
+        .palette-pink { background: var(--mirim-pink); }
+        .palette-yellow { background: var(--mirim-yellow); }
+        .palette-green { background: var(--mirim-green); }
+        .palette-blue { background: var(--mirim-blue); }
+
+        .statement-copy p {
+            display: inline-block;
+            width: fit-content; max-width: 100%;
+            font-family: "Six Caps", sans-serif;
+            font-size: clamp(50px, 6vw, 82px);
+            line-height: .85;
+            font-weight: 400;
+            letter-spacing: .01em;
+        }
+
+        .statement-description {
+            display: block !important;
+            width: 100% !important; max-width: 500px !important;
+            margin-top: 30px;
+            font-family: "DM Sans", sans-serif !important;
+            font-size: 15px !important;
+            line-height: 1.6 !important;
+            letter-spacing: 0 !important;
+        }
+
+        .underline { position: relative; display: inline-block; z-index: 1; }
+        .underline::after {
+            content: "";
+            position: absolute;
+            left: 0; right: 0; bottom: 2px;
+            height: 5px;
+            background: var(--lime);
+            z-index: -1;
+        }
+
+        /* BANNER 2 */
+
+        .banner-two {
+            width: var(--page-width);
+            margin: 0 auto 100px;
+            aspect-ratio: 2.4 / 1;
+            overflow: hidden;
+            background: var(--white);
+        }
+
+        .banner-two img {
+            width: 100%; height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* SQUARE IMAGES */
+
+        .square-images {
+            width: var(--page-width);
+            margin: 0 auto 120px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .square-images img {
+            width: 100%;
+            aspect-ratio: 1.7 / 1;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* STRATEGY */
+
+        .strategy { width: var(--page-width); margin: 0 auto 140px; }
+        .strategy-content {
+            display: grid;
+            grid-template-columns: 36% 1fr;
+            gap: 8vw;
+            align-items: start;
+        }
+
+        .strategy-title {
+            font-family: "Six Caps", sans-serif;
+            font-size: clamp(55px, 6vw, 82px);
+            line-height: .85;
+            font-weight: 400;
+        }
+
+        .strategy-copy { max-width: 600px; }
+        .strategy-copy p { margin-bottom: 30px; font-size: 15px; line-height: 1.6; }
+
+        /* FINAL MEDIA */
+
+        .final-media {
+            width: var(--page-width);
+            margin: 0 auto 140px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .final-media-image { width: 65%; overflow: hidden; }
+        .final-media-image img { width: 100%; height: auto; display: block; object-fit: contain; }
+
+        /* NEXT PROJECT */
+
+        .next-project {
+            width: var(--page-width);
+            margin: 0 auto;
+            padding: 70px 0 100px;
+            border-top: 1px solid #ddd;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+        }
+
+        .next-label {
+            margin-bottom: 14px;
+            font-family: "Manrope", sans-serif;
+            font-size: 9px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+        }
+
+        .next-title {
+            font-family: "Six Caps", sans-serif;
+            font-size: clamp(60px, 7vw, 100px);
+            line-height: .8;
+        }
+
+        .next-link {
+            font-family: "Manrope", sans-serif;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            border-bottom: 1px solid var(--black);
+            padding-bottom: 5px;
+        }
+
+        /* FOOTER */
+
+        .footer-bar { width: 100%; height: 14px; background: var(--orange); }
+
+        footer {
+            padding: 18px 5.5vw;
+            display: flex;
+            justify-content: space-between;
+            font-family: "DM Sans", sans-serif;
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+        }
+
+        /* BACK TO TOP */
+
+        .back-to-top {
+            position: fixed;
+            right: 28px; bottom: 28px;
+            width: 46px; height: 46px;
+            border: 1px solid var(--black);
+            border-radius: 50%;
+            background: var(--white);
+            color: var(--black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Manrope", sans-serif;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 1;
+            cursor: pointer;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: opacity .25s ease, visibility .25s ease, transform .25s ease, background .25s ease, color .25s ease;
+        }
+
+        .back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+        .back-to-top:hover { background: var(--black); color: var(--white); }
+
+        @media (max-width: 700px) {
+            header { padding: 20px 6vw; }
+            nav { gap: 15px; }
+            nav a { font-size: 9px; }
+            .hero { min-height: 52vh; padding: 120px 6vw 55px; }
+            .three-images, .statement-video, .square-images, .strategy, .final-media { width: 88vw; }
+            .three-images { grid-template-columns: 1fr; margin-bottom: 70px; }
+            .statement-video { grid-template-columns: 1fr; gap: 45px; margin-bottom: 70px; }
+            .statement-video-media { width: 70%; margin-left: 0; order: 1; }
+            .statement-copy { order: 2; }
+            .banner-two { width: 100%; margin-bottom: 75px; aspect-ratio: 16 / 9; }
+            .square-images { grid-template-columns: 1fr; margin-bottom: 75px; }
+            .strategy-content { grid-template-columns: 1fr; gap: 40px; }
+            .final-media-image { width: 90%; }
+            .next-project { width: 88vw; padding: 50px 0 70px; display: block; }
+            .next-link { display: inline-block; margin-top: 35px; }
+            footer { padding: 18px 6vw; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html" class="logo">
+            <img src="logolaura.png" alt="Laura Ferreira" class="logo-mark">
+            LAURA FERREIRA<span>®</span>
+        </a>
+        <nav>
+            <a href="index.html#work">Projetos</a>
+            <a href="index.html#about">Sobre</a>
+            <a href="index.html#areas">Atuação</a>
+            <a href="index.html#contact">Contato</a>
+        </nav>
+    </header>
+
+    <main id="top">
+        <section class="hero">
+            <div class="hero-tags">Estratégia · Conteúdo · Branding Experience</div>
+            <h1 class="hero-title">
+                <span class="marker marker-lime">Ateliê Mirim</span>
+            </h1>
+        </section>
+
+        <section class="three-images">
+            <img src="atelie-mirim2.jpg" alt="Identidade visual do Ateliê Mirim">
+            <img src="atelie-mirim3.jpg" alt="Comunicação do Ateliê Mirim">
+            <img src="atelie-mirim4.jpg" alt="Peça de comunicação do Ateliê Mirim">
+        </section>
+
+        <section class="statement-video">
+            <div class="statement-video-media">
+                <video autoplay muted loop playsinline>
+                    <source src="atelie-mirim5.mp4" type="video/mp4">
+                    Seu navegador não suporta vídeos HTML5.
+                </video>
+            </div>
+            <div class="statement-copy">
+                <div class="statement-palette" aria-label="Paleta de cores do Ateliê Mirim">
+                    <span class="palette-pink"></span>
+                    <span class="palette-yellow"></span>
+                    <span class="palette-green"></span>
+                    <span class="palette-blue"></span>
+                </div>
+                <p>não guardamos desenhos, <span class="underline">publicamos arte</span> </p>
+                <p class="statement-description">Em vez de comunicar o livro como uma maneira de organizar os desenhos das crianças, decidimos tratá-los como obras de arte. O livro deixou de ser só um registro e passou a ser pensado como uma publicação especial, com valor próprio.</p>
+            </div>
+        </section>
+
+        <section class="banner-two">
+            <img src="atelie-mirim-banner2.png" alt="Projeto Ateliê Mirim">
+        </section>
+
+        <section class="square-images">
+            <img src="atelie-mirim6.jpg" alt="Livro de Arte do Ateliê Mirim">
+            <img src="atelie-mirim7.jpg" alt="Comunicação visual do Ateliê Mirim">
+        </section>
+
+        <section class="strategy">
+            <div class="strategy-content">
+                <h2 class="strategy-title">Do produto à <span class="marker marker-lime">experiência</span></h2>
+                <div class="strategy-copy">
+                    <p>A definição dos conteúdos começou pelo comportamento que queríamos provocar em cada etapa. Antes de pensar em calendário ou formato, organizamos os principais pontos de contato da marca e o papel de cada um: o Instagram precisava despertar interesse e apresentar o universo do Ateliê; o site precisava aprofundar a proposta, mostrar o produto e dar segurança para a compra; e os materiais físicos precisavam levar essa mesma percepção para a experiência de receber o livro.</p>
+                    <p>Os conteúdos foram distribuídos de acordo com suas funções. Entravam conteúdos para apresentar o produto, mostrar como ele era produzido, explorar o universo visual da marca, gerar identificação com o público e responder às dúvidas que poderiam aparecer antes da compra. O calendário organizava esse fluxo para que a comunicação não dependesse apenas de posts pontuais, mas construísse uma sequência de contato com a marca.</p>
+                    <p>Em paralelo, trabalhei a experiência de marca a partir dos momentos de contato com o produto. Livro, embalagem, bolsa, papelaria e outros materiais foram pensados como extensões da identidade, considerando o que seria entregue, como seria apresentado e o que o público encontraria em cada etapa. A ideia era que a experiência física tivesse a mesma coerência da comunicação, sem tratar o branding experience apenas como aplicação visual da marca.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="final-media">
+            <div class="final-media-image">
+                <img src="atelie-mirim8.jpg" alt="Livro de Arte do Ateliê Mirim">
+            </div>
+        </section>
+
+        <section class="next-project">
+            <div>
+                <div class="next-label">Próximo projeto</div>
+                <div class="next-title">Espaço Flavia Pires</div>
+            </div>
+            <a href="espaco-favia-pires.html" class="next-link">Ver projeto →</a>
+        </section>
+    </main>
+
+    <div class="footer-bar"></div>
+
+    <footer>
+        <span>Laura Ferreira © 2026</span>
+        <span>Marketing & Estratégia</span>
+    </footer>
+
+    <button class="back-to-top" aria-label="Voltar ao topo" title="Voltar ao topo">↑</button>
+
+    <script>
+        const backToTop = document.querySelector(".back-to-top");
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 500) { backToTop.classList.add("show"); }
+            else { backToTop.classList.remove("show"); }
+        });
+        backToTop.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    </script>
+</body>
+</html>

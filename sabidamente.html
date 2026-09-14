@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sabidamente — Laura Ferreira</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Manrope:wght@300;400;500;600&family=Six+Caps&display=swap" rel="stylesheet">
+
+    <style>
+
+        :root {
+            --black: #111;
+            --white: #fff;
+
+            --portfolio-purple: #7B4DFF;
+            --sab-pink: #ED869A;
+            --sab-wine: #A3214D;
+            --sab-rose: #DB4B6F;
+            --sab-light: #F7C8CD;
+            --sab-white: #FFFFFF;
+            --sab-dark: #771235;
+
+            --sab-blue: #6F96D1;
+            --sab-palette-white: #FFFFFF;
+            --sab-dark-blue: #425B81;
+
+            --page-width: 88vw;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--white);
+            color: var(--black);
+            font-family: "DM Sans", sans-serif;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        img, video {
+            max-width: 100%;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* HEADER */
+
+        header {
+            position: absolute;
+            inset: 0 0 auto;
+            width: 100%;
+            padding: 25px 5.5vw;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 20;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-family: "Manrope", sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: -.035em;
+        }
+
+        .logo span {
+            color: var(--portfolio-purple);
+        }
+
+        .logo-mark {
+            width: auto;
+            height: 14px;
+            max-width: 14px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        nav {
+            display: flex;
+            gap: 34px;
+        }
+
+        nav a {
+            font-family: "DM Sans", sans-serif;
+            font-size: 11px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+            transition: opacity .2s ease;
+        }
+
+        nav a:hover {
+            opacity: .55;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 58vh;
+            padding: 145px 6vw 85px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .hero-tags {
+            width: 100%;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            font-family: "Manrope", sans-serif;
+            font-size: 9px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+        }
+
+        .hero-tags::before {
+            content: "";
+            width: 22px;
+            height: 2px;
+            background: var(--sab-rose);
+            flex-shrink: 0;
+        }
+
+        .hero-title {
+            max-width: 1000px;
+            font-family: "Six Caps", sans-serif;
+            font-size: clamp(70px, 9vw, 130px);
+            line-height: .82;
+            font-weight: 400;
+            letter-spacing: .01em;
+        }
+
+        .marker {
+            position: relative;
+            display: inline-block;
+            z-index: 1;
+        }
+
+        .marker::after {
+            content: "";
+            position: absolute;
+            left: -2%; right: -2%; bottom: 4%;
+            height: 20%;
+            z-index: -1;
+        }
+
+        .marker-purple::after { background: var(--portfolio-purple); }
+
+        /* BANNER 1 */
+
+        .banner-one {
+            width: var(--page-width);
+            margin: 0 auto 70px;
+            aspect-ratio: 2.4 / 1;
+            overflow: hidden;
+            background: var(--sab-light);
+        }
+
+        .banner-one img {
+            width: 100%; height: 100%;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* PALETA */
+
+        .banner-palette {
+            width: var(--page-width);
+            height: 24px;
+            margin: 0 auto 35px;
+            display: flex;
+        }
+
+        .banner-palette span { flex: 1; }
+        .palette-blue { background: var(--sab-blue); }
+        .palette-white { background: var(--sab-palette-white); }
+        .palette-dark-blue { background: var(--sab-dark-blue); }
+
+        /* BANNER STATEMENT */
+
+        .banner-statement {
+            width: var(--page-width);
+            margin: 0 auto 110px;
+            display: grid;
+            grid-template-columns: 1fr 31%;
+            gap: 8vw;
+            align-items: center;
+        }
+
+        .banner-statement-copy { width: fit-content; max-width: 100%; }
+
+        .banner-statement p {
+            display: inline-block;
+            width: fit-content; max-width: 100%;
+            font-family: "Six Caps", sans-serif;
+            font-size: clamp(50px, 6vw, 82px);
+            line-height: .85;
+            font-weight: 400;
+            letter-spacing: .01em;
+        }
+
+        .banner-statement span {
+            position: relative;
+            display: inline-block;
+            z-index: 1;
+        }
+
+        .banner-statement span::after {
+            content: "";
+            position: absolute;
+            left: -2%; right: -2%; bottom: 4%;
+            height: 18%;
+            background: var(--portfolio-purple);
+            z-index: -1;
+        }
+
+        .banner-statement-image {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            background: var(--sab-light);
+        }
+
+        .banner-statement-image img {
+            width: 100%; height: 100%;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* ROLETA 3D */
+
+        .banner-video {
+            width: var(--page-width);
+            height: clamp(430px, 48vw, 680px);
+            margin: 20px auto 35px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: transparent;
+            perspective: 1400px;
+            perspective-origin: 50% 50%;
+        }
+
+        .roulette {
+            position: relative;
+            width: 100%; height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform-style: preserve-3d;
+            cursor: grab;
+        }
+
+        .roulette:active { cursor: grabbing; }
+
+        .roulette-item {
+            position: absolute;
+            width: clamp(230px, 25vw, 390px);
+            aspect-ratio: 9 / 16;
+            left: 50%; top: 50%;
+            overflow: hidden;
+            background: transparent;
+            border: 0; outline: 0; box-shadow: none;
+            transform-style: preserve-3d;
+            transform-origin: center center;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            will-change: transform, opacity;
+            transition: transform 1.15s cubic-bezier(.22, .61, .36, 1), opacity .9s ease, filter .9s ease;
+        }
+
+        .roulette-item video {
+            width: 100%; height: 100%;
+            display: block;
+            object-fit: cover;
+            background: transparent;
+            border: 0; outline: 0; box-shadow: none;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+
+        /* ANALYTICS */
+
+        .analytics { width: var(--page-width); margin: 0 auto 140px; }
+        .analytics-title {
+            max-width: 750px;
+            margin-bottom: 55px;
+            font-family: "Six Caps", sans-serif;
+            font-size: clamp(55px, 7vw, 90px);
+            line-height: .84;
+            font-weight: 400;
+        }
+
+        .analytics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .metric {
+            min-height: 190px;
+            padding: 30px 25px 30px 0;
+            border-right: 1px solid #ddd;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .metric:not(:first-child) { padding-left: 25px; }
+        .metric:last-child { border-right: none; }
+
+        .metric-number {
+            font-family: "Six Caps", sans-serif;
+            font-size: clamp(52px, 5vw, 72px);
+            line-height: .8;
+        }
+
+        .metric-label {
+            max-width: 170px;
+            font-family: "Manrope", sans-serif;
+            font-size: 10px;
+            line-height: 1.5;
+            text-transform: uppercase;
+            letter-spacing: .07em;
+        }
+
+        /* STORY */
+
+        .story { width: var(--page-width); margin: 0 auto 140px; }
+        .story-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8vw;
+            align-items: stretch;
+        }
+
+        .story-image {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            background: var(--sab-light);
+        }
+
+        .story-image img {
+            width: 100%; height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .story-copy {
+            max-width: 520px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .story-title {
+            width: 100%; max-width: 520px;
+            margin-bottom: 50px;
+            font-family: "Six Caps", sans-serif;
+            font-size: clamp(52px, 6vw, 82px);
+            line-height: .88;
+            font-weight: 400;
+        }
+
+        .story-copy p { margin-bottom: 28px; font-size: 15px; line-height: 1.6; }
+        .story-copy p:last-child { margin-bottom: 0; }
+
+        /* NEXT PROJECT */
+
+        .next-project {
+            width: var(--page-width);
+            margin: 0 auto;
+            padding: 70px 0 100px;
+            border-top: 1px solid #ddd;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+        }
+
+        .next-label {
+            margin-bottom: 14px;
+            font-family: "Manrope", sans-serif;
+            font-size: 9px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+        }
+
+        .next-title {
+            font-family: "Six Caps", sans-serif;
+            font-size: clamp(60px, 7vw, 100px);
+            line-height: .8;
+        }
+
+        .next-link {
+            font-family: "Manrope", sans-serif;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            border-bottom: 1px solid var(--black);
+            padding-bottom: 5px;
+        }
+
+        /* FOOTER */
+
+        .footer-bar { width: 100%; height: 14px; background: var(--portfolio-purple); }
+
+        footer {
+            padding: 18px 5.5vw;
+            display: flex;
+            justify-content: space-between;
+            font-family: "DM Sans", sans-serif;
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+        }
+
+        /* BACK TO TOP */
+
+        .back-to-top {
+            position: fixed;
+            right: 28px; bottom: 28px;
+            width: 46px; height: 46px;
+            border: 1px solid var(--black);
+            border-radius: 50%;
+            background: var(--white);
+            color: var(--black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Manrope", sans-serif;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 1;
+            cursor: pointer;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: opacity .25s ease, visibility .25s ease, transform .25s ease, background .25s ease, color .25s ease;
+        }
+
+        .back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+        .back-to-top:hover { background: var(--black); color: var(--white); }
+
+        @media (max-width: 700px) {
+            header { padding: 20px 6vw; }
+            nav { gap: 15px; }
+            nav a { font-size: 9px; }
+            .hero { min-height: 52vh; padding: 120px 6vw 55px; }
+            .banner-one { width: 100%; margin-bottom: 35px; aspect-ratio: 16 / 9; }
+            .banner-palette, .banner-statement, .analytics, .story { width: 88vw; }
+            .banner-statement { grid-template-columns: 1fr; gap: 45px; margin-bottom: 70px; }
+            .banner-statement-image { width: 70%; margin-left: auto; }
+            .banner-video { width: 100%; height: 430px; margin-bottom: 80px; perspective: 900px; }
+            .roulette-item { width: 205px; }
+            .analytics-grid { grid-template-columns: 1fr 1fr; }
+            .metric { min-height: 150px; padding: 25px 15px 25px 0; border-bottom: 1px solid #ddd; }
+            .metric:nth-child(2) { border-right: none; padding-left: 15px; }
+            .metric:nth-child(3) { padding-left: 0; }
+            .metric:nth-child(4) { border-right: none; padding-left: 15px; }
+            .story-content { grid-template-columns: 1fr; gap: 40px; }
+            .next-project { width: 88vw; padding: 50px 0 70px; display: block; }
+            .next-link { display: inline-block; margin-top: 35px; }
+            footer { padding: 18px 6vw; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html" class="logo">
+            <img src="logolaura.png" alt="Laura Ferreira" class="logo-mark">
+            LAURA FERREIRA<span>®</span>
+        </a>
+        <nav>
+            <a href="index.html#work">Projetos</a>
+            <a href="index.html#about">Sobre</a>
+            <a href="index.html#areas">Atuação</a>
+            <a href="index.html#contact">Contato</a>
+        </nav>
+    </header>
+
+    <main id="top">
+        <section class="hero">
+            <div class="hero-tags">Estratégia · Conteúdo · Mídia Paga</div>
+            <h1 class="hero-title">
+                <span class="marker marker-purple">Sabidamente</span>
+            </h1>
+        </section>
+
+        <section class="banner-one">
+            <img src="sabidamente1.jpg" alt="Comunicação visual do projeto Sabidamente">
+        </section>
+
+        <div class="banner-palette" aria-label="Paleta de cores da Sabidamente">
+            <span class="palette-blue"></span>
+            <span class="palette-white"></span>
+            <span class="palette-dark-blue"></span>
+        </div>
+
+        <section class="banner-statement">
+            <div class="banner-statement-copy">
+                <p>colocando o <span>diagnóstico tardio</span> no radar de quem poderia estar procurando por ele</p>
+            </div>
+            <div class="banner-statement-image">
+                <img src="sabidamente-post.jpg" alt="Post de Instagram da Sabidamente">
+            </div>
+        </section>
+
+        <section class="banner-video">
+            <div class="roulette" id="roulette">
+                <div class="roulette-item"><video src="roleta-1.mp4" autoplay muted loop playsinline></video></div>
+                <div class="roulette-item"><video src="roleta-2.mp4" autoplay muted loop playsinline></video></div>
+                <div class="roulette-item"><video src="roleta-3.mp4" autoplay muted loop playsinline></video></div>
+            </div>
+        </section>
+
+        <section class="analytics">
+            <h2 class="analytics-title">quando estratégia encontra <span class="marker marker-purple">dados</span></h2>
+            <div class="analytics-grid">
+                <div class="metric">
+                    <div class="metric-number">18k</div>
+                    <div class="metric-label">alcance orgânico mensal</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-number">2.979</div>
+                    <div class="metric-label">seguidores</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-number">R$1,16</div>
+                    <div class="metric-label">custo por conversa</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-number">317</div>
+                    <div class="metric-label">conversas geradas por mídia paga</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="story">
+            <div class="story-content">
+                <div class="story-image">
+                    <img src="sabidamente2.jpg" alt="Projeto Sabidamente">
+                </div>
+                <div class="story-copy">
+                    <h2 class="story-title">o desafio não era alcançar mais, era <span class="marker marker-purple">alcançar melhor</span></h2>
+                    <p>Uma coisa que eu gostei muito na proposta da Sabidamente foi a preocupação da cliente em tornar a avaliação mais acessível, oferecendo valores sociais para adultos que estavam buscando entender uma possível neurodivergência. E aí veio o desafio: como fazer essa proposta chegar em mais gente sem comprometer a capacidade da operação? Como ela trabalha sozinha, inclusive acompanhando os próprios leads, a campanha precisava atrair pessoas realmente interessadas, mas dentro de uma demanda que ela conseguisse absorver.</p>
+                    <p>Foi daí que comecei a trabalhar a mídia paga, usando idade, localização e interesses relacionados ao tema para testar diferentes públicos e criativos. Conforme os resultados apareciam, fui entendendo onde valia a pena concentrar o investimento. Também trabalhei o conteúdo em outros pontos de contato para deixar a proposta mais clara e facilitar esse caminho até a avaliação.</p>
+                    <p>No fim do dia, a ideia era bem prática: usar o marketing para ampliar o acesso à informação e à avaliação, sem perder de vista o orçamento e a realidade de quem estava do outro lado da operação.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="next-project">
+            <div>
+                <div class="next-label">Próximo projeto</div>
+                <div class="next-title">Ateliê Mirim</div>
+            </div>
+            <a href="atelie-mirim.html" class="next-link">Ver projeto →</a>
+        </section>
+    </main>
+
+    <div class="footer-bar"></div>
+
+    <footer>
+        <span>Laura Ferreira © 2026</span>
+        <span>Marketing & Estratégia</span>
+    </footer>
+
+    <button class="back-to-top" aria-label="Voltar ao topo" title="Voltar ao topo">↑</button>
+
+    <script>
+        const backToTop = document.querySelector(".back-to-top");
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 500) { backToTop.classList.add("show"); }
+            else { backToTop.classList.remove("show"); }
+        });
+        backToTop.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        /* ROLETA 3D */
+        const roulette = document.getElementById("roulette");
+        const rouletteItems = document.querySelectorAll(".roulette-item");
+        let currentPosition = 0;
+        let isHovering = false;
+        let animationTimer;
+
+        function renderRoulette(animate = true) {
+            const positions = [
+                { x: -105, z: -100, rotateY: 30, scale: .78, opacity: .78, zIndex: 2 },
+                { x: 0, z: 150, rotateY: 0, scale: 1, opacity: 1, zIndex: 5 },
+                { x: 105, z: -100, rotateY: -30, scale: .78, opacity: .78, zIndex: 2 }
+            ];
+
+            rouletteItems.forEach((item, index) => {
+                let position = (index - currentPosition + 3) % 3;
+                const data = positions[position];
+                item.style.zIndex = data.zIndex;
+                item.style.opacity = data.opacity;
+                item.style.transition = animate ? "" : "none";
+                item.style.transform = `translate(-50%, -50%) translateX(${data.x}%) translateZ(${data.z}px) rotateY(${data.rotateY}deg) scale(${data.scale})`;
+            });
+
+            if (!animate) {
+                requestAnimationFrame(() => {
+                    rouletteItems.forEach(item => { item.style.transition = ""; });
+                });
+            }
+        }
+
+        function rotateRoulette() {
+            currentPosition = (currentPosition + 1) % 3;
+            renderRoulette(true);
+        }
+
+        function startAutoRotation() {
+            clearInterval(animationTimer);
+            animationTimer = setInterval(() => { rotateRoulette(); }, isHovering ? 2300 : 3800);
+        }
+
+        roulette.addEventListener("mouseenter", () => { isHovering = true; startAutoRotation(); });
+        roulette.addEventListener("mouseleave", () => { isHovering = false; startAutoRotation(); });
+        roulette.addEventListener("mousemove", (event) => {
+            if (!isHovering) return;
+            const rect = roulette.getBoundingClientRect();
+            const mouseX = event.clientX - rect.left;
+            const center = rect.width / 2;
+
+            if (mouseX > center + rect.width * .20) {
+                if (!roulette.dataset.mouseDirection || roulette.dataset.mouseDirection !== "right") {
+                    roulette.dataset.mouseDirection = "right";
+                    currentPosition = (currentPosition + 1) % 3;
+                    renderRoulette(true);
+                }
+            }
+            if (mouseX < center - rect.width * .20) {
+                if (!roulette.dataset.mouseDirection || roulette.dataset.mouseDirection !== "left") {
+                    roulette.dataset.mouseDirection = "left";
+                    currentPosition = (currentPosition + 2) % 3;
+                    renderRoulette(true);
+                }
+            }
+            if (mouseX >= center - rect.width * .20 && mouseX <= center + rect.width * .20) {
+                roulette.dataset.mouseDirection = "center";
+            }
+        });
+
+        renderRoulette(false);
+        startAutoRotation();
+
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+        if (reducedMotion.matches) { clearInterval(animationTimer); }
+    </script>
+</body>
+</html>
